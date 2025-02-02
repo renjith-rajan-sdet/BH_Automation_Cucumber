@@ -11,8 +11,6 @@ public class RuntimeEnvironment {
 	public PageObjectManager pages;
 	public String browser;
 	public String Environment;
-	public String ApplicationName;
-	public String TestCaseName;
 	public Configurations configurations;
 
 
@@ -22,7 +20,6 @@ public class RuntimeEnvironment {
 
 		this.driver = Browser.InitialiseWebDriver(browser);
 		this.scn = scn;
-		this.TestCaseName = Browser.getScenarioName(scn);
 
 		// Set the attributes
 		this.browser = browser;
@@ -37,7 +34,6 @@ public class RuntimeEnvironment {
 
 		this.driver = Browser.InitialiseWebDriver(Browser.getBrowser());
 		this.scn = scn;
-		this.TestCaseName = Browser.getScenarioName(scn);
 
 		// Set the attributes
 

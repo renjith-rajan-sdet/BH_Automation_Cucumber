@@ -43,14 +43,6 @@ public class Hooks extends BaseSteps{
 	}
 	@After()
 	public void closeBrowser() throws IOException, AWTException {
-
-		JavascriptExecutor jse = null;
-		try {
-			jse = (JavascriptExecutor)baseSteps.runtime.driver;
-		} catch (NullPointerException e2) {
-			Browser.getLogger().info("runtime/driver is null");
-		}
-		
 		if(baseSteps.runtime == null)
 		{
 			Browser.getLogger().info("runtime is null");
@@ -62,9 +54,7 @@ public class Hooks extends BaseSteps{
 			GeneralUtilities.recordTextDataEnd("Test Execution Ended", timeStamp,baseSteps.scn);
 		}
 		else if(baseSteps.scn.getStatus().toString().equals("PASSED"))
-		{
-			//baseSteps.mobileReusableFunctions.takeScreenSnap("Passed", baseSteps.scn,  baseSteps.runtime.driver);//for mobile app testing
-			baseSteps.generalUtilities.takeScreenSnap("Passed", baseSteps.scn,  baseSteps.runtime.driver);
+		{	baseSteps.generalUtilities.takeScreenSnap("Passed", baseSteps.scn,  baseSteps.runtime.driver);
 			String timeStamp = GeneralUtilities.generateTimeStamp();
 			GeneralUtilities.recordTextDataEnd("Test Execution Ended", timeStamp,baseSteps.scn);
 		}
@@ -76,29 +66,10 @@ public class Hooks extends BaseSteps{
 		}
 
 		try {
-			//baseSteps.runtime.driver.close();
 			baseSteps.runtime.driver.quit();
 		} catch (NullPointerException e) {
 			System.out.println("driver is null.....!");
 		}
 
 	}
-	
-	@Then("close the browser")
-	public void resetDriver()
-	{
-		try {
-			closeBrowser();
-		} catch (IOException | AWTException e) {
-			e.printStackTrace();
-			fail("Could not close the browser..!");
-		}
-		baseSteps.generalUtilities.waitForSeconds(10);
-	}
-
-
-
-	private RemoteWebDriver remoteWebDriver;
-
-
 }

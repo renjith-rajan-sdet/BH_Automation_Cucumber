@@ -1,5 +1,5 @@
 @BrightHorizonSanitychecks
-Feature: Sample cross browser tests
+Feature: Cross Browser Tests
 
   @CrossBrowserTests @TC_001_CrossBrowser
     @severity=High
@@ -19,9 +19,9 @@ Feature: Sample cross browser tests
 
   @CrossBrowserTests @TC_002_CrossBrowser
   @severity=High
-  Scenario Outline: TC002_BrightHorizons_WebSite_CenterSearch: Browser : "<Browser>"
+  Scenario Outline: TC002_BrightHorizons_WebSite_Search_ChildCare_Locations : Browser : "<Browser>"
     Given Web Application launched - Application - "BrightHorizons" : with Browser : "<Browser>", Environment : "PROD"
-    And click on - search - icon on top right of the screen
+    Then click on -Find a center- button on top of the screen
     And validate that the url of the webpage opened contains "/child-care-locator"
     And in the location search box - type 'New York' and press ENTER key
     When the search results are loaded, validate that the number of centers found is the same as the number of centers listed as search result
