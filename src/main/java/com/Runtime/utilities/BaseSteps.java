@@ -26,22 +26,7 @@ public class BaseSteps {
 		this.generalUtilities = new GeneralUtilities(runtime);
 
 	}
-
-	public RuntimeEnvironment getRuntime() {
-		return runtime;
-	}
-	public Scenario getScenario() {
-		return scn;
-	}
-
 	public PageObjectManager getPages() {
 		return pages;
 	}
-
-
-	public GeneralUtilities getGeneralReusableFunction()
-	{
-		return generalUtilities;
-	}
-
 }

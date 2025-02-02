@@ -2,14 +2,9 @@ package com.Base.Utilities;
 
 import static org.junit.jupiter.api.Assertions.fail;
 
-import java.io.File;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.time.Duration;
 import java.util.HashMap;
 import java.util.Map;
-import io.cucumber.java.Scenario;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
@@ -25,18 +20,12 @@ public class Browser {
 	/** The Constant LOGGER. */
 	private static final Logger LOGGER = LogManager.getLogger();
 
-	/** The Constant osName. */
-	public static final String osName = System.getProperty("os.name");
-
 	/** The Constant targetBrowser. */
 	public static String targetBrowser = System.getProperty("browser");
 
 
 	private static String envNameFromSystemProperty = System.getProperty("env");
 	private static String headlessMode = System.getProperty("headless");
-
-	public static final String downloadPath = System.getProperty("user.dir") + File.separator + "src" + File.separator
-			+ "test" + File.separator + "resources" + File.separator + "downloads" + File.separator;
 
 	/**
 	 * return the logger
@@ -102,42 +91,25 @@ public class Browser {
 	}
 
 	private static WebDriver newFirefoxDriver() {
-		Path path = Paths.get(downloadPath);
 		FirefoxOptions options = new FirefoxOptions();
 		Map<String, Object> prefs = new HashMap<String, Object>();
 		prefs.put("profile.default_content_settings.popups", 0);
 
-		if (Files.exists(path)) {
-			prefs.put("download.default_directory", downloadPath);
-			getLogger().info("Default download path is set to {}", downloadPath);
-		} else {
-			getLogger().error("Default download path {} does not exists", downloadPath);
-			return null;
-		}
 		options.addArguments("-private");
 		options.addArguments("--start-maximized");
+		options.addArguments("--deny-permission-prompts");
 		if (getHeadlessMode().equalsIgnoreCase("True")) {
 			getLogger().info("Firefox running in headless mode....!");
 			options.addArguments("--headless");
 		}
-		System.setProperty("webdriver.gecko.driver", "src/test/resources/driver/geckodriver.exe");
-
 		return new FirefoxDriver(options);
 	}
 
 	private static WebDriver newEdgeDriver() {
-		Path path = Paths.get(downloadPath);
 		EdgeOptions options = new EdgeOptions();
 		Map<String, Object> prefs = new HashMap<String, Object>();
 		prefs.put("profile.default_content_settings.popups", 0);
 
-		if (Files.exists(path)) {
-			prefs.put("download.default_directory", downloadPath);
-			getLogger().info("default download path is set to {}", downloadPath);
-		} else {
-			getLogger().error("Default download path {} does not exists", downloadPath);
-			return null;
-		}
 		if (getHeadlessMode().equalsIgnoreCase("True")) {
 			getLogger().info("Edge running in headless mode....!");
 			options.addArguments("--headless");
@@ -157,25 +129,17 @@ public class Browser {
 		options.addArguments("--ignore-certificate-errors");// Added to handle insecure content
 		options.addArguments("--disable-popup-blocking");
 		options.addArguments("--disable-backgrounding-occluded-windows");// To handle multiple windows
+		options.addArguments("--deny-permission-prompts");
 
-//		WebDriverManager.edgedriver().setup();
 		return new EdgeDriver(options);
 	}
 
 	private static WebDriver newChromeDriver() {
-		Path path = Paths.get(downloadPath);
 		ChromeOptions options = new ChromeOptions();
 		Map<String, Object> prefs = new HashMap<String, Object>();
 		prefs.put("profile.default_content_settings.popups", 0);
 		prefs.put("profile.default_content_settings.cookies", 2);
 
-		if (Files.exists(path)) {
-			prefs.put("download.default_directory", downloadPath);
-			getLogger().info("Chrome default download path is set to {}", downloadPath);
-		} else {
-			getLogger().error("Default download path {} does not exists", downloadPath);
-			return null;
-		}
 		options.setExperimentalOption("prefs", prefs);
 		options.addArguments("--no-sandbox");
 		options.addArguments("--incognito");
@@ -201,15 +165,4 @@ public class Browser {
 		}
 		return new ChromeDriver(options);
 	}
-
-	public static String getScenarioName(Scenario scn) {
-		Browser.getLogger().info("Scenario name for data sheet : " + (scn.getName().split(":"))[0]);
-		if (scn.getName().contains(":")) {
-			return (scn.getName().split(":"))[0].trim();
-		}
-		return scn.getName().trim();
-	}
-
-
-
 }

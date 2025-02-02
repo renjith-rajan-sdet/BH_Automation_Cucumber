@@ -13,9 +13,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
-import java.awt.*;
-import java.io.IOException;
-
 import static org.junit.Assert.fail;
 
 public class SearchBrightHorisons_Screen {
