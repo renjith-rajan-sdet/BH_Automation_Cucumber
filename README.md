@@ -7,12 +7,12 @@
 * JDK 21
 * Mozilla Firefox (This is needed to open Allure reort after running tests)
 
-**Firefox settings that must be done for opening alure report (to disable strict origin policy): **
+**Firefox settings that must be done for opening allure report (to disable strict origin policy): **
 
 1) Open firefox.
 2) On the address bar - type : about:config
 3) Click on the button : Accept the risk and continue
-4) Search the preference name : security.fileuri.strict_origin_policy and turnthe setting to 'False'
+4) Search the preference name : 'security.fileuri.strict_origin_policy' and turn the setting to 'False'
 
 **Snaps : **
 
