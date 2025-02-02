@@ -1,0 +1,23 @@
+# Ignore directories
+.gradle
+.settings
+.project
+.classpath
+.allure
+.metadata
+.idea
+
+build/
+
+allure-report/
+allure-results/
+**/log
+doc/
+target/
+
+#ignore files
+*.log
+#ignore video recording files
+*.avi
+
+gradle.properties
