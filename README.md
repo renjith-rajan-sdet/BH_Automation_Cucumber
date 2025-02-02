@@ -1,7 +1,7 @@
 **Run guide for the automation framework**
 ********************************************
 
-**System requirements : **
+** System requirements **
 
 * Windows 10/11
 * JDK 21
@@ -14,16 +14,16 @@
 3) Click on the button : Accept the risk and continue
 4) Search the preference name : 'security.fileuri.strict_origin_policy' and turn the setting to 'False'
 
-**Snaps : **
+** Snaps **
 
 <img width="815" alt="image" src="https://github.com/user-attachments/assets/45c9f961-91ce-4bd0-896e-0f71c286c095" />
 <img width="748" alt="image" src="https://github.com/user-attachments/assets/19b26d07-5e97-47a9-8d93-5545f3291283" />
 <img width="953" alt="image" src="https://github.com/user-attachments/assets/97fc8cb1-af16-4081-bf8b-bfbf5dafbac7" />
 
-**Running test cases : **
+** Running test cases **
 
 1) Go to the project folder and start cmd mode.
-2) Type the run command : gradlew.bat clean test -Dcucumber.filter.tags=@SanityTests -PBrowser=Chrome -PEnv=QA generateReport -Ptest.parallel=true
+2) Type the run command and press ENTER : gradlew.bat clean test -Dcucumber.filter.tags=@SanityTests -PBrowser=Chrome -PEnv=QA generateReport -Ptest.parallel=true
 
    (The above command is going to run the 2 tests automated).
 4) Once done, the allure reports will be generated in the folder : allure-report. Open the file : allure-report/index.html in firefox to view the allure report.
