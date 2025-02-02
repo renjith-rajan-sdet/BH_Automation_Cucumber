@@ -7,7 +7,7 @@ Windows 10/11
 JDK 21
 Mozilla Firefox (This is needed to open Allure reort after running tests)
 
-**Firefox settings to be done for opening alure report (to disable strict origin policy): **
+**Firefox settings that must be done for opening alure report (to disable strict origin policy): **
 
 1) Open firefox.
 2) On the address bar - type : about:config
@@ -24,9 +24,10 @@ Mozilla Firefox (This is needed to open Allure reort after running tests)
 
 1) Go to the project folder and start cmd mode.
 2) Type the run command : gradlew.bat clean test -Dcucumber.filter.tags=@SanityTests -PBrowser=Chrome -PEnv=QA generateReport -Ptest.parallel=true
+
    (The above command is going to run the 2 tests automated).
-3) Once done, the allure reports will be generated in the folder : allure-report. Open the file : allure-report/index.html in firefox to view the alure report.
-4) Cucumber reports will be generated in the path : target/cucumber-reports and can be opened by opening the file (use any browser) : target/cucumber-reports/Html.html
+4) Once done, the allure reports will be generated in the folder : allure-report. Open the file : allure-report/index.html in firefox to view the allure report.
+5) Cucumber reports will be generated in the path : target/cucumber-reports and can be opened by opening the file (use any browser) : target/cucumber-reports/Html.html
 
 snaps : 
 
