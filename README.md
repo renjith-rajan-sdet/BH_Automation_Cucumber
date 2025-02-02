@@ -3,9 +3,9 @@
 
 **System requirements : **
 
-Windows 10/11
-JDK 21
-Mozilla Firefox (This is needed to open Allure reort after running tests)
+* Windows 10/11
+* JDK 21
+* Mozilla Firefox (This is needed to open Allure reort after running tests)
 
 **Firefox settings that must be done for opening alure report (to disable strict origin policy): **
 
