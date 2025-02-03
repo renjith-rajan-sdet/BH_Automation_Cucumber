@@ -61,7 +61,7 @@ dependencies {
 	implementation group: 'org.junit.platform', name: 'junit-platform-runner', version: "${junitPlatformSuiteVersion}"
 	implementation group: 'org.junit.platform', name: 'junit-platform-suite', version: "${junitPlatformSuiteVersion}"
 	implementation group: 'org.junit.platform', name: 'junit-platform-suite-api', version: "${junitPlatformSuiteVersion}"
-	runtimeOnly group: 'org.junit.platform', name: 'junit-platform-suite-commons', version: "${junitPlatformSuiteVersion}"
+	implementation group: 'org.junit.platform', name: 'junit-platform-suite-commons', version: "${junitPlatformSuiteVersion}"
 	implementation group: 'org.junit.platform', name: 'junit-platform-suite-engine', version: "${junitPlatformSuiteVersion}"
 	implementation group: 'org.junit.platform', name: 'junit-platform-testkit', version: "${junitPlatformSuiteVersion}"
 	implementation group: 'org.junit.jupiter', name: 'junit-jupiter', version: "${junitJupiterVersion}"
@@ -80,12 +80,10 @@ allure {
 }
 
 test {
-	jvmArgs "-noverify"
 	systemProperty "file.encoding", "UTF-8"
 	systemProperties(project.gradle.startParameter.systemPropertiesArgs)
 	systemProperty "cucumber.execution.parallel.enabled",findProperty("test.parallel")
 	systemProperty "browser",findProperty("browser")
-	systemProperty "grid",findProperty("grid")
 	systemProperty "env",findProperty("env")
 	systemProperty "headless",findProperty("headless")
 	systemProperty "cucumber.junit-platform.naming-strategy", "long"
